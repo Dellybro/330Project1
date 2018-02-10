@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ucontext.h>
+// #include <ucontext.h>
 
 struct Queue {
     struct TCB_t *head;
@@ -12,7 +12,7 @@ typedef struct TCB_t {
     struct TCB_t *prev;
     struct TCB_t *next;
     int payload;
-    ucontext_t context;
+    // ucontext_t context;
 } TCB_t;
 
 void init_TCB (TCB_t *tcb, void *function, void *stackP, int stack_size){
