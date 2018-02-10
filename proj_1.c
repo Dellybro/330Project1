@@ -15,6 +15,7 @@ int main(){
 
     for (int i = 0; i < 10; i++){ 
         struct TCB_t* item = newTCB(i);
+        printf("Adding queue");
         AddQueue(linkedList,item);
     }
     // // // write a function printQ to print the Queue//
