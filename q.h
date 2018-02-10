@@ -44,14 +44,14 @@ struct TCB_t *DelQueue(struct Queue *list){
 
 /* Adds to tail. */
 void AddQueue(struct Queue *list, struct TCB_t *newItem){
-    printf("Adding queue1");
+    printf("Adding queue1\n");
     if(list->head == NULL){
-        printf("Adding queue2");
+        printf("Adding queue2\n");
         list->head = newItem;
-        printf("Adding queue3");
+        printf("Adding queue3\n");
         return;
     } 
-    printf("Adding queue4");
+    printf("Adding queue4\n");
     struct TCB_t *current = list->head;
     if(current->next == NULL){
         current->next = newItem;
