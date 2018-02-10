@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include "tcb.h"
 
+#if !defined(NULL)
+    #define NULL ((void*)0)
+#endif
 
 struct TCB_t *newTCB(int payload){
     struct TCB_t* node = (struct TCB_t*)malloc (sizeof (struct TCB_t));
