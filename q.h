@@ -23,7 +23,7 @@ void initQueue(struct Queue *list){
 /* Deletes head of queue */
 struct TCB_t *DelQueue(struct Queue *list){
     struct TCB_t* previousHead = list->head;
-    if(previousHead->next == NULL){
+    if(!previousHead->next){
         list->head = NULL;
         return previousHead;
     }
@@ -48,7 +48,7 @@ struct TCB_t *DelQueue(struct Queue *list){
 /* Adds to tail. */
 void AddQueue(struct Queue *list, struct TCB_t *newItem){
     printf("Adding queue1\n");
-    if(list->head == NULL){
+    if(!list->head){
         printf("Adding queue2\n");
         list->head = newItem;
         printf("Adding queue3\n");
@@ -56,7 +56,7 @@ void AddQueue(struct Queue *list, struct TCB_t *newItem){
     } 
     printf("Adding queue4\n");
     struct TCB_t *current = list->head;
-    if(current->next == NULL){
+    if(!current->next){
         current->next = newItem;
         current->prev = newItem;
         newItem->next = current;
@@ -84,9 +84,9 @@ void RotateQ(struct Queue *list){
 void printQ(struct Queue *list){
     struct TCB_t *current = list->head;
     /* Make sure current isn't null */
-    if(current == NULL){
+    if(!current){
         return;
-    }else if(current->next == NULL){
+    }else if(!current->next){
         /* if no next, only print current payload */
         printf("Current: %i \n", current->payload);
     } else {
