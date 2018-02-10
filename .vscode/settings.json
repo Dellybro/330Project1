@@ -4,6 +4,7 @@
         "functional": "c",
         "iterator": "c",
         "q.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "__nullptr": "c"
     }
 }

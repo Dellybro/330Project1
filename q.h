@@ -3,9 +3,6 @@
 #include <stdlib.h>
 #include "tcb.h"
 
-#if !defined(NULL)
-    #define NULL ((void*)0)
-#endif
 
 struct TCB_t *newTCB(int payload){
     struct TCB_t* node = (struct TCB_t*)malloc (sizeof (struct TCB_t));
@@ -23,7 +20,7 @@ void initQueue(struct Queue *list){
 /* Deletes head of queue */
 struct TCB_t *DelQueue(struct Queue *list){
     struct TCB_t* previousHead = list->head;
-    if(!previousHead->next){
+    if(previousHead->next == NULL){
         list->head = NULL;
         return previousHead;
     }
@@ -47,16 +44,13 @@ struct TCB_t *DelQueue(struct Queue *list){
 
 /* Adds to tail. */
 void AddQueue(struct Queue *list, struct TCB_t *newItem){
-    printf("Adding queue1\n");
-    if(!list->head){
-        printf("Adding queue2\n");
+    if(list->head == NULL){
         list->head = newItem;
-        printf("Adding queue3\n");
         return;
     } 
-    printf("Adding queue4\n");
+
     struct TCB_t *current = list->head;
-    if(!current->next){
+    if(current->next == NULL){
         current->next = newItem;
         current->prev = newItem;
         newItem->next = current;
@@ -84,9 +78,9 @@ void RotateQ(struct Queue *list){
 void printQ(struct Queue *list){
     struct TCB_t *current = list->head;
     /* Make sure current isn't null */
-    if(!current){
+    if(current == NULL){
         return;
-    }else if(!current->next){
+    }else if(current->next == NULL){
         /* if no next, only print current payload */
         printf("Current: %i \n", current->payload);
     } else {
