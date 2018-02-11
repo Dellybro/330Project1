@@ -1,3 +1,9 @@
+/**
+ * CSE 330 Assignment 1 Threading using TCB's
+ * Travis Delly
+ * 1210230252
+ * 
+*/
 
 // #define _XOPEN_SOURCE
 
@@ -6,14 +12,12 @@
 #include "threads.h"
 
 
-
-
 void infinLoop1(){
     int i = 0;
     for(;;){
-        printf("%i\n", i);
+        printf("InfinLoop1 Loop #%i\n", i);
         i++;
-
+        global++;
         yield();
     }
 }
@@ -28,6 +32,15 @@ void infinLoop2(){
             printf("Tiger!\n");
         }
         i++;
+        global++;
+        yield();
+    }
+}
+
+void infinLoop3(){
+    for(;;){
+        global++;
+        printf("Total Context switches %i\n", global);
         yield();
     }
 }
@@ -42,6 +55,7 @@ int main(){
 
     start_thread(infinLoop1,1);
     start_thread(infinLoop2,2);
+    start_thread(infinLoop3,3);
 
 
     run();

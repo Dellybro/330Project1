@@ -1,9 +1,16 @@
+/**
+ * CSE 330 Assignment 1 Threading using TCB's
+ * Travis Delly
+ * 1210230252
+ * 
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "q.h"
 
 struct Queue *RunQ;
+int global = 0;
 
 void start_thread(void (*function)(void), int threadId){
 //  begin pseudo code
@@ -22,17 +29,14 @@ void start_thread(void (*function)(void), int threadId){
 
 void run(){
     ucontext_t parent; // get a place to store the main context, for faking
-    getcontext(&parent); // magic sauce
+    getcontext(&parent); // This gets the context that is currently running
     swapcontext(&parent, &(RunQ->head->context)); // start the first thread
 }
 
 void yield(){
-//  rotate the run Q;
-//  swap the context, from previous thread to the thread pointed to by RunQ
-    ucontext_t previousQueue;
-    getcontext(&previousQueue);
-    RunQ->head->context = previousQueue;
-
+    ucontext_t previousContext;
+    getcontext(&previousContext);
+    RunQ->head->context = previousContext;
     RotateQ(RunQ);
-    swapcontext(&previousQueue, &(RunQ->head->context));
+    swapcontext(&previousContext, &(RunQ->head->context));
 }

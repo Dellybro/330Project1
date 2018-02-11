@@ -9,6 +9,7 @@
         "threads.h": "c",
         "atomic": "c",
         "algorithm": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "bitset": "c"
     }
 }
