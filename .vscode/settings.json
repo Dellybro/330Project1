@@ -5,6 +5,10 @@
         "iterator": "c",
         "q.h": "c",
         "stdlib.h": "c",
-        "__nullptr": "c"
+        "__nullptr": "c",
+        "threads.h": "c",
+        "atomic": "c",
+        "algorithm": "c",
+        "stdio.h": "c"
     }
 }
